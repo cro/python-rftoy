@@ -1,0 +1,41 @@
+---
+repos:
+  - repo: https://github.com/psf/black.git
+    rev: 22.10.0
+    hooks:
+      - id: black
+        description: Blacken Python
+        language: python
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args:
+          - --output-format=parseable
+          - --rcfile=.pylintrc
+          - --disable=I
+      - id: projtools/poetry-requirements-check
+        name: projtools/poetry-requirements-check
+        entry: projtools/poetry-requirements-check
+        language: script
+        files: pyproject.toml
+  - repo: https://github.com/python-poetry/poetry
+    rev: '1.2.2'
+    hooks:
+      - id: poetry-check
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: end-of-file-fixer
+        name: end-of-file-fixer
+        entry: end-of-file-fixer
+        description: Fix end of file issues
+        language: python
+      - id: mixed-line-ending
+        name: mixed-line-ending
+        entry: mixed-line-ending
+        description: Fix mixed line endings
+        language: python

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+CURDIR=$CWD
+SCRIPT_RELATIVE_DIR=$(dirname "${BASH_SOURCE[0]}")
+cd $SCRIPT_RELATIVE_DIR/..
+
+poetry lock
+poetry export --without-hashes --without=dev -o requirements.txt
+cd $CURDIR
