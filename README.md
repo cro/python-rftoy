@@ -76,3 +76,17 @@ textual names, like
 ```sh
 ./rftoy "Office Fan Low" on
 ```
+
+### Using this library in code
+
+You can also refer to the docstrings in the code for other examples.
+
+```python
+from rftoy import RFToy
+
+myToy = RFToy("http://192.168.2.4/")
+myToy.repopulate()
+
+myToy.on(station_id=4)
+myToy.on(station_name="Living Room Lamp")
+```
