@@ -1,0 +1,1 @@
+# Interface for 433 MHz devices controlled by RFToy.
